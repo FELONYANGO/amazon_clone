@@ -1,4 +1,4 @@
-import {cart} from "../data/cart.js";
+import {cart, deleteProduct} from "../data/cart.js";
 import {product} from "../data/products.js";
 import { moneyCurrency } from "./utils/moneycurrecy.js ";
 // generate the checkout page for the emlements inside the cart and present them
@@ -49,7 +49,7 @@ cartSummery +=
                   <span class="update-quantity-link link-primary">
                     Update
                   </span>
-                  <span class="delete-quantity-link link-primary">
+                  <span class=" delete delete-quantity-link link-primary" data-product-id="${matchingProdut.id}">
                     Delete
                   </span>
                 </div>
@@ -123,4 +123,20 @@ document.querySelector(".js-order-summary").innerHTML = cartSummery;
 
 
 
-console.log(cartSummery);
+// console.log(cartSummery);
+
+let newCart ;
+
+// function to delet form the cart 
+document.querySelectorAll(".delete").forEach((deleteButton) => {
+   deleteButton.addEventListener("click", () => {
+    //  get the data from the attribe of this button  and log it in the console
+    const productId = deleteButton.getAttribute("data-product-id");
+// call the deleteProduct function
+   deleteProduct(productId);
+   console.log(cart);
+ 
+   });
+  
+
+});
