@@ -66,7 +66,6 @@ document.querySelectorAll(".js-add-to-cart-button").forEach((button) => {
     const productId = button.getAttribute("data-product-id");
     console.log(productId);
 
-    // Find if product in cart or does not exist and add it to the cart
     let productInCart = cart.find((product) => product.id === productId);
     if (productInCart) {
       productInCart.quantity += 1;
@@ -82,7 +81,10 @@ document.querySelectorAll(".js-add-to-cart-button").forEach((button) => {
       cartQuantity += product.quantity;
     });
     document.querySelector(".js-cart-quantity").textContent = cartQuantity;
-
+    localStorage.setItem('cart', JSON.stringify(cart));
+  
     console.log(cart);
+console.log(`this is the cart ${cart}`);
+
   });
 });
