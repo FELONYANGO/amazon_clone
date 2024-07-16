@@ -5,19 +5,18 @@ import { moneyCurrency } from "./utils/moneycurrecy.js ";
 //loop through the cart array and get the product id and quantity
 const storedCart = localStorage.getItem('cart');
 let cart = storedCart ? JSON.parse(storedCart) : [];
-console.log(`this is the cart`, cart);
+//console.log(`this is the cart`, cart);
 
 let cartSummary = '';
 
 cart.forEach((item) => {
-  const productId = item.id; // Ensure this is 'id'
+  const productId = item.id; 
 
   let matchingProduct = product.find(p => p.id === productId);
-  console.log(matchingProduct); // Check if matchingProduct is found
 
   if (matchingProduct) {
     cartSummary += `
-      <div class="cart-item-container">
+      <div class="cart-item-container js-remove-class-${matchingProduct.id}">
         <div class="delivery-date">
           Delivery date: Tuesday, June 21
         </div>
@@ -25,7 +24,6 @@ cart.forEach((item) => {
           <div>
             <div class="cart-item-details-grid">
               <img class="product-image" src="${matchingProduct.image}">
-
               <div class="cart-item-details">
                 <div class="product-name">
                   ${matchingProduct.name}
@@ -47,7 +45,6 @@ cart.forEach((item) => {
               </div>
             </div>
           </div>
-
           <div class="delivery-options">
             <div class="delivery-options-title">
               Choose a delivery option:
@@ -94,16 +91,18 @@ cart.forEach((item) => {
 
 document.querySelector(".js-order-summary").innerHTML = cartSummary;
 
-console.log(cartSummary);
-
 // Delete from cart functionality
 document.querySelectorAll(".delete").forEach((deleteButton) => {
   deleteButton.addEventListener("click", () => {
     const productId = deleteButton.getAttribute("data-product-id");
     deleteProduct(productId);
 
+    const container = document.querySelector(`.js-remove-class-${productId}`);
+    if (container) {
+      container.remove();
+    }
+
     // Update localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
-    console.log(cart);
   });
 });
