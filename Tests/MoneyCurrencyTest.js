@@ -1,5 +1,5 @@
 // lets import moneycurrency.js
-import { moneyCurrency } from '.../scripts/utils/moneycurrency.js';
+import { moneyCurrency } from "../scripts/utils/moneycurrecy.js";
 
 //log test suite name
 console.log("Test suite:moneyCurrency function test");

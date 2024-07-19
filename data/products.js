@@ -1,3 +1,32 @@
+//class for the products
+
+class ProductsClass {
+    id;
+    image;
+    name;
+    rating;
+    priceCents;
+
+
+  constructor(products) {
+    this.id = products.id;
+    this.image = products.image;
+    this.name = products.name;
+    this.rating = products.rating;  
+    this.priceCents = products.priceCents;
+  }
+  getPrice() {
+    return (this.priceCents / 100).toFixed(2);
+}
+getRatingStars() {
+  return this.rating.stars;
+}
+
+  getUrl(){
+    return `product-rating-stars" src="images/ratings/rating-${this.rating.stars * 10}.png`;
+  }
+}
+
 
 
 export const product = [
@@ -659,4 +688,8 @@ export const product = [
       "mens"
     ]
   }
-];
+].map(products=>{
+  return new ProductsClass(products);
+})
+
+console.log(typeof product);
