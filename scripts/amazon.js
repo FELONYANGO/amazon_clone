@@ -22,12 +22,12 @@ product.forEach(function(product) {
       <div class="product-rating-container">
         <img class="${product.getUrl()}">
         <div class="product-rating-count link-primary">
-          ${product.rating.count}
+          ${product.getRatingStars()}
         </div>
       </div>
 
       <div class="product-price">
-        $${moneyCurrency(product.priceCents )}
+        $${product.getMoneyCurrency()}
       </div>
 
       <div class="product-quantity-container">

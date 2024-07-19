@@ -1,4 +1,6 @@
 //class for the products
+import { moneyCurrency } from "../scripts/utils/moneycurrecy.js"
+
 
 class ProductsClass {
     id;
@@ -24,6 +26,9 @@ getRatingStars() {
 
   getUrl(){
     return `product-rating-stars" src="images/ratings/rating-${this.rating.stars * 10}.png`;
+  }
+  getMoneyCurrency(){
+    return moneyCurrency(this.priceCents);
   }
 }
 

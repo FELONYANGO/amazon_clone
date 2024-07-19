@@ -13,10 +13,10 @@ function updatedcartfunction() {
     const productId = item.id;
 
     let matchingProduct = product.find((p) => p.id === productId);
-
     if (matchingProduct) {
+      
       cartSummary += `
-      <div class="cart-item-container js-remove-class-${matchingProduct.id}">
+      <div class="cart-item-container js-remove-class-${matchingProduct.image}">
         <div class="delivery-date">
           Delivery date: Tuesday, June 21
         </div>
@@ -29,7 +29,7 @@ function updatedcartfunction() {
                   ${matchingProduct.name}
                 </div>
                 <div class="product-price">
-                  $${moneyCurrency(matchingProduct.priceCents)}
+                  $${moneyCurrency(matchingProduct.getMoneyCurrency())}
                 </div>
                 <div class="product-quantity">
                   <span>
