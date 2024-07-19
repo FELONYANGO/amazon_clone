@@ -1,9 +1,8 @@
 // lets import moneycurrency.js
-import { moneyCurrency} from '../scripts/utils/moneycurrecy.js';
-
+import { moneyCurrency } from '.../scripts/utils/moneycurrency.js';
 
 //log test suite name
-console.log("moneyCurrency function test");
+console.log("Test suite:moneyCurrency function test");
 
 // lets create a new instance of the MoneyCurrency class
 console.log(" works with zero amount");
