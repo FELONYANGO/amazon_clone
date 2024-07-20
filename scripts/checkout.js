@@ -1,6 +1,8 @@
 import { deleteProduct } from "../data/cart.js";
 import { product } from "../data/products.js";
 import { moneyCurrency } from "./utils/moneycurrecy.js ";
+import {tonaiandbeyond} from '../data/backend-practise.js';
+
 // generate the checkout page for the emlements inside the cart and present them
 //loop through the cart array and get the product id and quantity
 const storedCart = localStorage.getItem("cart");

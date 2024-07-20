@@ -2,6 +2,9 @@
 import { moneyCurrency } from "../scripts/utils/moneycurrecy.js"
 
 
+
+
+
 class ProductsClass {
     id;
     image;
