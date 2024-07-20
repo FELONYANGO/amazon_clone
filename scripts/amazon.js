@@ -1,12 +1,13 @@
 // import { moneyCurrency } from './utils/moneycurrency.js';
 
 import { cart } from "../data/cart.js";
-import { product } from "../data/products.js";
+import { product,getfrombackend } from "../data/products.js";
  import { moneyCurrency } from "../scripts/utils/moneycurrecy.js";
 
+ console.log(getfrombackend(displayproducts));
 // // Create the array of products in the page
 // console.log(` this is moneycurrecncy ${{moneyCurrency}}`);
-
+export function displayproducts(){
 let productHtml = "";
 product.forEach(function(product) {
   productHtml += `
@@ -91,4 +92,5 @@ console.log(`this is the cart ${cart}`);
 
   });
 });
+}
 // console.log();

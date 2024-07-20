@@ -1,10 +1,13 @@
 import { deleteProduct } from "../data/cart.js";
-import { product } from "../data/products.js";
+import { product ,getfrombackend} from "../data/products.js";
 import { moneyCurrency } from "./utils/moneycurrecy.js ";
-import {tonaiandbeyond} from '../data/backend-practise.js';
+import { displayproducts } from "./amazon.js";
+console.log(moneyCurrency);
+console.log(getfrombackend());
 
 // generate the checkout page for the emlements inside the cart and present them
 //loop through the cart array and get the product id and quantity
+getfrombackend(()=>{
 const storedCart = localStorage.getItem("cart");
 let cart = storedCart ? JSON.parse(storedCart) : [];
 //console.log(`this is the cart`, cart);
@@ -200,3 +203,4 @@ Follow js Rulea
 }
 updatedcartfunction();
 // makeApiCall();
+});
