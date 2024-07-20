@@ -1,7 +1,7 @@
 // import cart from localStorage
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-console.log(cart);
+// .log(cart);
 // make the class for the cart.js file
 class cartClass {
     cart;
@@ -26,9 +26,11 @@ class cartClass {
  
 }
 
+
+
 const ShoeCart = new cartClass();
-console.log(ShoeCart);
+// .log(ShoeCart);
 
 const shirtCart = new cartClass();
-console.log(shirtCart);
+// .log(shirtCart);
  

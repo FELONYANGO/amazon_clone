@@ -8,6 +8,7 @@ class ProductsClass {
     name;
     rating;
     priceCents;
+    type;
 
 
   constructor(products) {
@@ -16,6 +17,7 @@ class ProductsClass {
     this.name = products.name;
     this.rating = products.rating;  
     this.priceCents = products.priceCents;
+    this.type = products.type;
   }
   getPrice() {
     return (this.priceCents / 100).toFixed(2);
@@ -30,9 +32,22 @@ getRatingStars() {
   getMoneyCurrency(){
     return moneyCurrency(this.priceCents);
   }
+  getSizeChartLink(){
+    return '';
+  }
 }
 
-
+//create class cloth to extend class products and if a product is a clothing item, it will have a size chart link
+class Clothing extends ProductsClass {
+  sizeChartLink;
+  constructor(products) {
+    super(products);
+    this.sizeChartLink = products.sizeChartLink;
+  }
+  getSizeChartLink(){
+    return `<a href="${this.sizeChartLink}" target="_blank">Size Chart</a>`;
+  }
+}
 
 export const product = [
   {
@@ -694,7 +709,13 @@ export const product = [
     ]
   }
 ].map(products=>{
+  if(products.type === "clothing"){
+    return new Clothing(products);
+  } 
+
+  
   return new ProductsClass(products);
+  
 })
 
 console.log(typeof product);
