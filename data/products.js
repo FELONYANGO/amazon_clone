@@ -1,5 +1,5 @@
 //class for the products
-import { moneyCurrency } from "../scripts/utils/moneycurrecy.js"
+import { moneyCurrency } from "../scripts/utils/moneycurrecy.js";
 
 
 
@@ -23,6 +23,7 @@ class ProductsClass {
     this.type = products.type;
   }
   getPrice() {
+    // ////console.log(`the price is ${this.priceCents} `);
     return (this.priceCents / 100).toFixed(2);
 }
 getRatingStars() {
@@ -33,7 +34,10 @@ getRatingStars() {
     return `product-rating-stars" src="images/ratings/rating-${this.rating.stars * 10}.png`;
   }
   getMoneyCurrency(){
-    return moneyCurrency(this.priceCents);
+    const prices =  this.priceCents;
+    const price= moneyCurrency((prices));
+    console.log(`the price after money currency ${price}`);
+    return price;
   }
   getSizeChartLink(){
     return '';
@@ -67,7 +71,7 @@ export function getfrombackend(fun){
   //     } 
   //     return new ProductsClass(products);      
   //     });  
-  //     console.log('get products from backend');
+  //     ////console.log('get products from backend');
   //     fun();
   // });
 
@@ -75,6 +79,7 @@ export function getfrombackend(fun){
   // xhr.send();
  
   // lets use fettch to perform the above task
+  try{
   const  data = fetch('https://supersimplebackend.dev/products').then(response => response.json()).then(data => {
     product =data.map(products=>{
       if(products.type === "clothing"){
@@ -82,19 +87,21 @@ export function getfrombackend(fun){
       } 
       return new ProductsClass(products);      
       }); 
-      console.log('get products from backend');
+      ////console.log('get products from backend');
       fun();
 
   } );
   
-
+  }catch(error){
+    ////console.log("something went wrong");
+  }
 
 
 
 
 }
 
-// console.log(getfrombackend());
+// ////console.log(getfrombackend());
 
 /*
 export const product = [
@@ -766,5 +773,5 @@ export const product = [
   
 })
 
-// console.log(typeof product);
+// ////console.log(typeof product);
 */

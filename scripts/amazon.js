@@ -28,7 +28,7 @@ product.forEach(function(product) {
       </div>
 
       <div class="product-price">
-        $${product.getMoneyCurrency()}
+        $${product.getPrice()}
       </div>
 
       <div class="product-quantity-container">

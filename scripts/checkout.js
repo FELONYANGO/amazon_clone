@@ -1,7 +1,7 @@
 import { deleteProduct } from "../data/cart.js";
 import { product ,getfrombackend} from "../data/products.js";
 import { moneyCurrency } from "./utils/moneycurrecy.js ";
-import { displayproducts } from "./amazon.js";
+// import { displayproducts } from "./amazon.js";
 console.log(moneyCurrency);
 console.log(getfrombackend());
 
@@ -34,7 +34,7 @@ function updatedcartfunction() {
                   ${matchingProduct.name}
                 </div>
                 <div class="product-price">
-                  $${moneyCurrency(matchingProduct.getMoneyCurrency())}
+                  $${matchingProduct. getMoneyCurrency() }
                 </div>
                 <div class="product-quantity">
                   <span>
@@ -126,7 +126,8 @@ function updatedcartfunction() {
 
   document.querySelector(
     ".payment-summery-class"
-  ).innerHTML = `          <div class="payment-summary-title">
+  ).innerHTML =
+   `<div class="payment-summary-title">
             Order Summary
           </div>
 
@@ -157,7 +158,7 @@ function updatedcartfunction() {
             )}</div>
           </div>
 
-          <button class="place-order-button button-primary">
+          <button class="btnPlaceOder place-order-button button-primary">
             Place your order
           </button>
           `;
@@ -167,6 +168,35 @@ function updatedcartfunction() {
  Checkout (<a class="return-to-home-link"
             href="amazon.html">${itemsNumber} items</a>)
 `;
+
+   document.querySelector(".btnPlaceOder").addEventListener("click", () => {
+    alert("Order placed successfully");
+    localStorage.clear();
+    window.location.href = "amazon.html";
+  }
+  );
+
+  // create an event listener for the  Place your order button
+   document.querySelector(".place-order-button").addEventListener("click", async() => {
+    //creae a fetch post to  https://supersimplebacken.dev/oders
+    // with the body of the cart
+    const responce = await fetch("https://supersimplebackend.dev/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(
+        {
+          cart: cart
+        }),
+    });
+    const data = await responce.json();
+    console.log(data);
+    alert("Order placed successfully");
+
+    window.location.href = "amazon.html";
+  });
+
 
   // Delete from cart functionality
   document.querySelectorAll(".delete").forEach((deleteButton) => {
@@ -204,3 +234,10 @@ Follow js Rulea
 updatedcartfunction();
 // makeApiCall();
 });
+
+// click function of the place order button
+// document.querySelector(".place-order-button").addEventListener("click", () => {
+//   alert("Order placed successfully");
+//   localStorage.clear();
+//   window.location.href = "amazon.html";
+// });
